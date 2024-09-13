@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "exports-loader": "^5.0.0"
+  },
+  "dependencies": {
+    "jsxgraph": "^1.9.2"
+  }
+}
