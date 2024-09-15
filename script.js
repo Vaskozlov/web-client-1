@@ -1,4 +1,5 @@
 import {stringToFloat} from "./string_to_float.js";
+import {insertToTable} from "./table_updater.js"
 import JXG from 'https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.mjs';
 
 const allowed_radios = ["1", "1.5", "2", "2.5", "3"];
@@ -94,10 +95,8 @@ function drawAreas() {
 
 window.onload = function () {
     drawAreas();
+    insertToTable();
 }
-
-// replace canvas with JSXGraph
-// postman/swagger
 
 document.getElementById("check_button")
     .onclick =
