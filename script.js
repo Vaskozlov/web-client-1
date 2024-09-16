@@ -140,7 +140,7 @@ document.getElementById("check_button")
 function handleSuccess(response)
 {
     response.json()
-    
+
     .then(data => {
         console.log(data)
         
@@ -168,7 +168,6 @@ function handleError(response)
     });
 }
 
-
 function addPoint(x, y, r, result, timeMS) {
-
+    insertToTable(x, y, r, result, timeMS);
 }
