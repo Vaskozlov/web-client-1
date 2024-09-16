@@ -162,6 +162,7 @@ function handleError(response)
     response.json()
     .then(data => {
         console.log(data)
+        alert(data["error"]);
     })
     .catch(error => {
         console.error(data);
