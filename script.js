@@ -108,32 +108,17 @@ document.getElementById("check_button")
             return;
         }
 
-        if (Math.abs(x_value.getValue()) > 3) {
-            alert("x value out of range");
-            return;
-        }
-
         const y_value = stringToFloat(y_input_element.value);
 
         if (y_value.isError()) {
             alert(`Incorrect y value: ${y_value.getError()}`);
             return;
         }
-
-        if (Math.abs(y_value.getValue()) > 5) {
-            alert("y value out of range");
-            return;
-        }
-
-        if (!allowed_radios.includes(r_select_element.value.replace(",", "."))) {
-            alert("radius is not in allowed list");
-            return;
-        }
-
+         
         const r_value = stringToFloat(r_select_element.value)
 
         if (r_value.isError()) {
-            alert(`Incorrect x value: ${r_value.getError()}`);
+            alert(`Incorrect r value: ${r_value.getError()}`);
             return;
         }
 
@@ -144,19 +129,45 @@ document.getElementById("check_button")
             {method: "POST", body: json_request})
             .then(response => {
                 if (!response.ok) {
-                    throw new Error("HTTP error " + response.status);
+                    handleError(response);
+                    return;
                 }
 
-                return response.json();
+                handleSuccess(response);
             })
-            .then(data => {
-                console.log(data);
-                addPoint(x_value.getValue(), y_value.getValue(), r_value.getValue(), data["result"], data["timeMS"]);
-            })
-            .catch(error => {
-                console.error("Error: " + error);
-            });
     }
+
+function handleSuccess(response)
+{
+    response.json()
+    
+    .then(data => {
+        console.log(data)
+        
+        addPoint(
+            data["x"],
+            data["y"],
+            data["r"],
+            data["isInArea"],
+            data["executionTimeMS"]
+        );
+    })
+    .catch(error => {
+        console.error(data);
+    });
+}
+
+function handleError(response)
+{
+    response.json()
+    .then(data => {
+        console.log(data)
+    })
+    .catch(error => {
+        console.error(data);
+    });
+}
+
 
 function addPoint(x, y, r, result, timeMS) {
 
