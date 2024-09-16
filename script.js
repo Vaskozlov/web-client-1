@@ -95,7 +95,6 @@ function drawAreas() {
 
 window.onload = function () {
     drawAreas();
-    insertToTable();
 }
 
 document.getElementById("check_button")
@@ -161,8 +160,8 @@ function handleError(response)
 {
     response.json()
     .then(data => {
-        console.log(data)
         alert(data["error"]);
+        console.log(data)
     })
     .catch(error => {
         console.error(data);
