@@ -36,9 +36,9 @@ export function insertToTable(x, y, r, is_in_area, time_ns) {
 
 export function deleteRows()
 {
-    for (let i = 1; i != current_cell + 1; ++i)
+    for (let i = 1; i != current_cell; ++i)
     {
-        is_in_area_table.deleteRow(i);
+        is_in_area_table.deleteRow(1);
     }
 
     current_cell = 1;
