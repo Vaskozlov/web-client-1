@@ -1,6 +1,6 @@
-import {stringToFloat} from "./string_to_float.js";
-import {insertToTable} from "./table_updater.js"
-import {createBoard, drawAreas} from "./board.js"
+import { stringToFloat } from "./string_to_float.js";
+import { insertToTable } from "./table_updater.js"
+import { createBoard, drawAreas } from "./board.js"
 
 const x_input_element = document.getElementById("x_input")
 const y_input_element = document.getElementById("y_input")
@@ -29,7 +29,7 @@ document.getElementById("check_button")
             alert(`Incorrect y value: ${y_value.getError()}`);
             return;
         }
-         
+
         const r_value = stringToFloat(r_select_element.value)
 
         if (r_value.isError()) {
@@ -44,8 +44,7 @@ document.getElementById("check_button")
         );
     }
 
-function testPoint(x, y, r) 
-{
+async function testPoint(x, y, r) {
     const json_request = JSON.stringify(
         {
             x: x,
@@ -53,12 +52,14 @@ function testPoint(x, y, r)
             r: r
         });
 
-    fetch(`http://${host_name}/fcgi-bin/hello-world.jar`,
-        {
-            method: "POST",
-            body: json_request
-        })
-        .then(response => {
+    try {
+        const response = await fetch(
+            `http://${host_name}/fcgi-bin/hello-world.jar`,
+            {
+                method: "POST",
+                body: json_request
+            });
+
             console.log(`Status: ${response.status}`);
 
             if (!response.ok) {
@@ -67,16 +68,17 @@ function testPoint(x, y, r)
             }
 
             handleSuccess(response);
-        })   
+    } catch (error) {
+        console.error(error);
+        alert("Failed to get response from the server");
+    }
 }
 
-function handleSuccess(response)
-{
-    response.json()
-
-    .then(data => {
+async function handleSuccess(response) {
+    try {
+        const data = await response.json();
         console.log(data)
-        
+
         addPoint(
             data["x"],
             data["y"],
@@ -84,22 +86,19 @@ function handleSuccess(response)
             data["isInArea"],
             data["executionTimeMS"]
         );
-    })
-    .catch(error => {
-        console.error(`Error: ${error}, data: ${data}`);
-    });
+    } catch (error) {
+        console.error(error);
+    }
 }
 
-function handleError(response)
-{
-    response.json()
-    .then(data => {
+async function handleError(response) {
+    try {
+        const data = await response.json();
         alert(data["error"]);
         console.log(data)
-    })
-    .catch(error => {
-        console.error(data);
-    });
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 function addPoint(x, y, r, result, timeMS) {
