@@ -50,7 +50,15 @@ function testWithRadius(x, y, r_selector_name)
     
     if (selector.checked)
     {
-        console.log(selector.name);
+        const r_value = stringToFloat(selector.name);
+
+        if (r_value.isError())
+        {
+            alert(`Incorrect radius: ${x_value.getError()}`);
+            return;
+        }
+
+        testPoint(x, y, r_value.getValue());
     }
 }
 
