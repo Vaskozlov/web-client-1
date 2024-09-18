@@ -72,27 +72,44 @@ table tbody {
 
 table tbody tr {
     width: 100%;
-    border: 1px solid;
 }
 
 table thead, table tbody tr {
     display: table;
     table-layout: fixed;
-    border: 1px solid;
     border-collapse: collapse;
 }
 
 table th
 {
-    border: 1px solid;
     border-collapse: collapse;
     height: 35px;
 }
 
 table td 
 {
-    border: 1px solid;
     border-collapse: collapse;
     text-align: center;
-    height: 35px;
+    padding: 12px 15px;
+}
+
+.table_of_results {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.table_of_results tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.table_of_results tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.table_of_results tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
 }
