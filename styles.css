@@ -24,7 +24,8 @@ h2 {
 #results_table {
     float: left;
     width: 65%;
-    height: 500px;
+    height: 400px;
+    margin-bottom: 500px;
 }
 
 #is_in_area_table {
@@ -43,7 +44,7 @@ h2 {
 
 #input_space {
     float: right;
-    width: 30%
+    width: 30%;
 }
 
 canvas.square_canvas {
@@ -121,4 +122,9 @@ div .jxgbox
 {
     aspect-ratio: 1/1;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#check_button{
+    margin-left: 5%;
+    margin-top: 2%;
 }

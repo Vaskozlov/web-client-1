@@ -1,5 +1,5 @@
 import { stringToFloat } from "./string_to_float.js";
-import { insertToTable } from "./table_updater.js"
+import { insertToTable,deleteRows } from "./table_updater.js"
 import { createBoard, drawAreas } from "./board.js"
 
 const x_input_element = document.getElementById("x_input")
@@ -14,6 +14,8 @@ const r30_select_element = document.getElementById("r=3")
 const host_name = "localhost:8080";
 
 const board = createBoard();
+
+document.getElementById("clear_button").onclick = deleteRows;
 
 window.onload = function () {
     drawAreas(board);
