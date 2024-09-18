@@ -54,13 +54,12 @@ table {
     flex-flow: column;
     height: 100%;
     width: 100%;
-    border-collapse: collapse;
 }
 
 table thead {
     flex: 0 0 auto;
     width: calc(100% - 0.9em);
-    border: solid;
+    border: 1px solid;
 }
 
 table tbody {
@@ -68,6 +67,7 @@ table tbody {
     display: block;
     overflow-y: scroll;
     overflow-x: hidden;
+    border: 1px solid;
 }
 
 table tbody tr {
