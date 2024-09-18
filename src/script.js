@@ -4,7 +4,13 @@ import { createBoard, drawAreas } from "./board.js"
 
 const x_input_element = document.getElementById("x_input")
 const y_input_element = document.getElementById("y_input")
-const r_select_element = document.getElementById("r_input")
+
+const r10_select_element = document.getElementById("r=1")
+const r15_select_element = document.getElementById("r=1.5")
+const r20_select_element = document.getElementById("r=2")
+const r25_select_element = document.getElementById("r=2.5")
+const r30_select_element = document.getElementById("r=3")
+
 const host_name = "localhost:8080";
 
 const board = createBoard();
@@ -28,18 +34,21 @@ document.getElementById("check_button").onclick = function () {
         return;
     }
 
-    const r_value = stringToFloat(r_select_element.value)
+    testWithRadius(x, y, "r=1");
+    testWithRadius(x, y, "r=1.5");
+    testWithRadius(x, y, "r=2");
+    testWithRadius(x, y, "r=2.5");
+    testWithRadius(x, y, "r=3");
+}
 
-    if (r_value.isError()) {
-        alert(`Incorrect r value: ${r_value.getError()}`);
-        return;
+function testWithRadius(x, y, r_selector_name) 
+{
+    const selector = document.getElementById(r_selector_name);
+    
+    if (selector.checked)
+    {
+        console.log(selector.value);
     }
-
-    testPoint(
-        x_value.getValue(),
-        y_value.getValue(),
-        r_value.getValue()
-    );
 }
 
 async function testPoint(x, y, r) {

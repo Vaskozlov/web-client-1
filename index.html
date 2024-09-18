@@ -48,18 +48,33 @@
             </label>
         </p>
         <p>
-            <label for="r_input">
-                r:
-                <select id="r_input" name="radius">
-                    <option value="1">1</option>
-                    <option value="1.5">1.5</option>
-                    <option value="2">2</option>
-                    <option value="2.5">2.5</option>
-                    <option value="3">3</option>
-                </select>
-            </label>
+            <fieldset>
+                <legend>
+                    Select r
+                </legend>
+                <div>
+                    <input type="checkbox" id="r=1" name="r=1"/>
+                    <label for="r=1">r = 1</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="r=1.5" name="r=1.5"/>
+                    <label for="r=1.5">r = 1.5</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="r=2" name="2"/>
+                    <label for="r=2">r = 2</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="r=2.5" name="r=2.5"/>
+                    <label for="r=2.5">r = 2.5</label>
+                </div>
+                <div></div>
+                    <input type="checkbox" id="r=3" name="r=3"/>
+                    <label for="r=3">r = 3</label>
+                </div>
+            </fieldset>
         </p>
-        <button id="check_button">
+        <button id="check_button" style="margin-left: 5.5%; margin-top: 2%;">
             Check
         </button>
     </div>
