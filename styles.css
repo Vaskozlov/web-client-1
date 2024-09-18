@@ -9,10 +9,16 @@ body {
 
 h1 {
     text-align: center;
+    font-family: 'Serif';
+    font-size: 2em;
+    color: rgb(0, 0, 83);
 }
 
 h2 {
     text-align: center;
+    font-family: 'Serif';
+    font-size: 1.5em;
+    color: rgb(0, 0, 83);
 }
 
 #results_table {
@@ -111,3 +117,8 @@ table td {
     color: #009879;
 }
 
+div .jxgbox
+{
+    aspect-ratio: 1/1;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}

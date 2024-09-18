@@ -11,7 +11,6 @@ const board = createBoard();
 
 window.onload = function () {
     drawAreas(board);
-    insertToTable(0, 0, 0, true, 10);
 }
 
 document.getElementById("check_button").onclick = function () {

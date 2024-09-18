@@ -1,6 +1,6 @@
 import { Result } from "./result.js";
 
-const float_check_regex = /^\d+([.,]\d*)?$/;
+const float_check_regex = /^[+-]?\d+([.,]\d*)?$/;
 
 export function stringToFloat(x) {
     if (typeof (x) != "string") {
