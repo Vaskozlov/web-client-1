@@ -13,36 +13,34 @@ window.onload = function () {
     drawAreas(board);
 }
 
-document.getElementById("check_button")
-    .onclick =
-    function () {
-        const x_value = stringToFloat(x_input_element.value);
+document.getElementById("check_button").onclick = function () {
+    const x_value = stringToFloat(x_input_element.value);
 
-        if (x_value.isError()) {
-            alert(`Incorrect x value: ${x_value.getError()}`);
-            return;
-        }
-
-        const y_value = stringToFloat(y_input_element.value);
-
-        if (y_value.isError()) {
-            alert(`Incorrect y value: ${y_value.getError()}`);
-            return;
-        }
-
-        const r_value = stringToFloat(r_select_element.value)
-
-        if (r_value.isError()) {
-            alert(`Incorrect r value: ${r_value.getError()}`);
-            return;
-        }
-
-        testPoint(
-            x_value.getValue(),
-            y_value.getValue(),
-            r_value.getValue()
-        );
+    if (x_value.isError()) {
+        alert(`Incorrect x value: ${x_value.getError()}`);
+        return;
     }
+
+    const y_value = stringToFloat(y_input_element.value);
+
+    if (y_value.isError()) {
+        alert(`Incorrect y value: ${y_value.getError()}`);
+        return;
+    }
+
+    const r_value = stringToFloat(r_select_element.value)
+
+    if (r_value.isError()) {
+        alert(`Incorrect r value: ${r_value.getError()}`);
+        return;
+    }
+
+    testPoint(
+        x_value.getValue(),
+        y_value.getValue(),
+        r_value.getValue()
+    );
+}
 
 async function testPoint(x, y, r) {
     const json_request = JSON.stringify(
@@ -60,14 +58,12 @@ async function testPoint(x, y, r) {
                 body: json_request
             });
 
-            console.log(`Status: ${response.status}`);
+        if (!response.ok) {
+            handleError(response);
+            return;
+        }
 
-            if (!response.ok) {
-                handleError(response);
-                return;
-            }
-
-            handleSuccess(response);
+        handleSuccess(response);
     } catch (error) {
         console.error(error);
         alert("Failed to get response from the server");
@@ -79,12 +75,12 @@ async function handleSuccess(response) {
         const data = await response.json();
         console.log(data)
 
-        addPoint(
+        insertToTable(
             data["x"],
             data["y"],
             data["r"],
             data["isInArea"],
-            data["executionTimeMS"]
+            data["executionTimeNS"]
         );
     } catch (error) {
         console.error(error);
@@ -98,9 +94,6 @@ async function handleError(response) {
         console.log(data)
     } catch (error) {
         console.error(error);
+        alert(`Server code: ${response.status}, error: ${error}`)
     }
-}
-
-function addPoint(x, y, r, result, timeMS) {
-    insertToTable(x, y, r, result, timeMS);
 }
