@@ -50,7 +50,7 @@ function testWithRadius(x, y, r_selector_name)
     
     if (selector.checked)
     {
-        console.log(selector.innerText);
+        console.log(selector.name);
     }
 }
 
