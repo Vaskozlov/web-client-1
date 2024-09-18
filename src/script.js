@@ -34,6 +34,9 @@ document.getElementById("check_button").onclick = function () {
         return;
     }
 
+    const x = x_value.getValue();
+    const y = y_value.getValue();
+
     testWithRadius(x, y, "r=1");
     testWithRadius(x, y, "r=1.5");
     testWithRadius(x, y, "r=2");
