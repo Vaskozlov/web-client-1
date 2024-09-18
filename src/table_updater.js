@@ -14,7 +14,9 @@ export function insertToTable(x, y, r, is_in_area, time_ns) {
     y_cell.innerHTML = y.toString();
     r_cell.innerHTML = r.toString();
     is_in_area_cell.innerHTML = is_in_area.toString();
-    time_ns_cell.innerHTML = `${time_ns}ns`;
+    time_ns_cell.innerHTML = new Intl.DurationFormat("en").format({
+        nanoseconds: time_ns
+    });
 
     ++current_cell;
 }
