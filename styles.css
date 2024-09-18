@@ -59,7 +59,6 @@ table {
 table thead {
     flex: 0 0 auto;
     width: calc(100% - 0.9em);
-    border: 1px solid;
 }
 
 table tbody {
@@ -67,35 +66,33 @@ table tbody {
     display: block;
     overflow-y: scroll;
     overflow-x: hidden;
-    border: 1px solid;
 }
 
 table tbody tr {
     width: 100%;
 }
 
-table thead, table tbody tr {
+table thead,
+table tbody tr {
     display: table;
     table-layout: fixed;
     border-collapse: collapse;
 }
 
-table th
-{
+table th {
     border-collapse: collapse;
     height: 35px;
 }
 
-table td 
-{
+table td {
     border-collapse: collapse;
     text-align: center;
     padding: 12px 15px;
 }
 
 .table_of_results {
+    border-radius: 5px;
     border-collapse: collapse;
-    margin: 25px 0;
     font-size: 0.9em;
     font-family: sans-serif;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -113,3 +110,4 @@ table td
     font-weight: bold;
     color: #009879;
 }
+
