@@ -48,11 +48,6 @@ h2 {
     width: 30%;
 }
 
-canvas.square_canvas {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-}
-
 .table-container {
     height: 10em;
 }
@@ -122,6 +117,7 @@ table td {
 div .jxgbox
 {
     aspect-ratio: 1/1;
+    width: min(100%, 45vh);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
