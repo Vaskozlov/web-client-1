@@ -2,38 +2,32 @@ import { stringToFloat } from "./string_to_float.js";
 import { insertToTable, deleteRows } from "./table_updater.js"
 import { createBoard, drawAreas } from "./board.js"
 
+const host_name = "localhost:8080";
+
 const x_input_element = document.getElementById("x_input")
 const y_input_element = document.getElementById("y_input")
 const x_input_error = document.getElementById("x_input_error")
 const y_input_error = document.getElementById("y_input_error")
-const host_name = "localhost:8080";
-
 const board = createBoard();
 
-function showErrorInCaseNonFloatInput(input_element, error_element)
-{
+function showErrorInCaseNonFloatInput(input_element, error_element) {
     const value = stringToFloat(input_element.value);
-
-    if (value.isError()) {
-        error_element.textContent = value.getError().message;
-    } else {
-        error_element.textContent = "";
-    }
+    error_element.textContent = value.isError() ? value.getError().message : "";
 }
 
-x_input_element.oninput = function(){
+x_input_element.oninput = function () {
     showErrorInCaseNonFloatInput(x_input_element, x_input_error);
 }
 
-y_input_element.oninput = function(){
+y_input_element.oninput = function () {
     showErrorInCaseNonFloatInput(y_input_element, y_input_error);
 }
-
-document.getElementById("clear_button").onclick = deleteRows;
 
 window.onload = function () {
     drawAreas(board);
 }
+
+document.getElementById("clear_button").onclick = deleteRows;
 
 document.getElementById("check_button").onclick = function () {
     const x_value = stringToFloat(x_input_element.value);
@@ -65,7 +59,7 @@ function testWithRadius(x, y, r_selector_name) {
         const r_value = stringToFloat(selector.name);
 
         if (r_value.isError()) {
-            alert(`Incorrect radius: ${x_value.getError()}`);
+            alert(`Incorrect radius: ${r_value.getError()}`);
             return;
         }
 
@@ -121,8 +115,20 @@ async function handleSuccess(response) {
 async function handleError(response) {
     try {
         const data = await response.json();
-        alert(data["error"]);
-        console.log(data)
+        const value = data["value"];
+        const message = data["message"];
+
+        switch (value) {
+            case "x":
+                x_input_error.textContent = message;
+                break;
+
+            case "y":
+                y_input_error.textContent = message;
+
+            default:
+                throw new Error(message);
+        }
     } catch (error) {
         console.error(error);
         alert(`Server code: ${response.status}, error: ${error}`)
