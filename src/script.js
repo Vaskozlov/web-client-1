@@ -1,16 +1,32 @@
 import { stringToFloat } from "./string_to_float.js";
-import { insertToTable,deleteRows } from "./table_updater.js"
+import { insertToTable, deleteRows } from "./table_updater.js"
 import { createBoard, drawAreas } from "./board.js"
 
 const x_input_element = document.getElementById("x_input")
 const y_input_element = document.getElementById("y_input")
+const x_input_error = document.getElementById("x_input_error")
+const y_input_error = document.getElementById("y_input_error")
 const host_name = "localhost:8080";
 
 const board = createBoard();
 
-x_input_element.oninput = function()
+function showErrorInCaseNonFloatInput(input_element, error_element)
 {
-    console.log("print");
+    const value = stringToFloat(input_element.value);
+
+    if (value.isError()) {
+        error_element.textContent = value.getError().message;
+    } else {
+        error_element.textContent = "";
+    }
+}
+
+x_input_element.oninput = function(){
+    showErrorInCaseNonFloatInput(x_input_element, x_input_error);
+}
+
+y_input_element.oninput = function(){
+    showErrorInCaseNonFloatInput(y_input_element, y_input_error);
 }
 
 document.getElementById("clear_button").onclick = deleteRows;
@@ -23,14 +39,12 @@ document.getElementById("check_button").onclick = function () {
     const x_value = stringToFloat(x_input_element.value);
 
     if (x_value.isError()) {
-        alert(`Incorrect x value: ${x_value.getError()}`);
         return;
     }
 
     const y_value = stringToFloat(y_input_element.value);
 
     if (y_value.isError()) {
-        alert(`Incorrect y value: ${y_value.getError()}`);
         return;
     }
 
@@ -44,16 +58,13 @@ document.getElementById("check_button").onclick = function () {
     testWithRadius(x, y, "r=3");
 }
 
-function testWithRadius(x, y, r_selector_name) 
-{
+function testWithRadius(x, y, r_selector_name) {
     const selector = document.getElementById(r_selector_name);
-    
-    if (selector.checked)
-    {
+
+    if (selector.checked) {
         const r_value = stringToFloat(selector.name);
 
-        if (r_value.isError())
-        {
+        if (r_value.isError()) {
             alert(`Incorrect radius: ${x_value.getError()}`);
             return;
         }
