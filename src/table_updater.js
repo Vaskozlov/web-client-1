@@ -19,11 +19,11 @@ function formatTimeNs(time_ns) {
 export function insertToTable(x, y, r, is_in_area, time_ns) {
     const row = is_in_area_table.insertRow(current_cell);
 
-    let x_cell = row.insertCell(0);
-    let y_cell = row.insertCell(1);
-    let r_cell = row.insertCell(2);
-    let is_in_area_cell = row.insertCell(3);
-    let time_ns_cell = row.insertCell(4);
+    const x_cell = row.insertCell(0);
+    const y_cell = row.insertCell(1);
+    const r_cell = row.insertCell(2);
+    const is_in_area_cell = row.insertCell(3);
+    const time_ns_cell = row.insertCell(4);
 
     x_cell.innerHTML = x.toString();
     y_cell.innerHTML = y.toString();
@@ -34,10 +34,8 @@ export function insertToTable(x, y, r, is_in_area, time_ns) {
     ++current_cell;
 }
 
-export function deleteRows()
-{
-    for (let i = 1; i != current_cell; ++i)
-    {
+export function deleteRows() {
+    for (let i = 1; i != current_cell; ++i) {
         is_in_area_table.deleteRow(1);
     }
 

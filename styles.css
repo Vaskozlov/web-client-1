@@ -128,3 +128,10 @@ div .jxgbox
     margin-left: 5%;
     margin-top: 2%;
 }
+
+.input_error
+{
+    display: block;
+    color: red;
+    margin: 5px 0 0 0;
+}

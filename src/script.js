@@ -4,16 +4,14 @@ import { createBoard, drawAreas } from "./board.js"
 
 const x_input_element = document.getElementById("x_input")
 const y_input_element = document.getElementById("y_input")
-
-const r10_select_element = document.getElementById("r=1")
-const r15_select_element = document.getElementById("r=1.5")
-const r20_select_element = document.getElementById("r=2")
-const r25_select_element = document.getElementById("r=2.5")
-const r30_select_element = document.getElementById("r=3")
-
 const host_name = "localhost:8080";
 
 const board = createBoard();
+
+x_input_element.oninput = function()
+{
+    console.log("print");
+}
 
 document.getElementById("clear_button").onclick = deleteRows;
 
