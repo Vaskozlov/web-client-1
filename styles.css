@@ -117,7 +117,7 @@ table td {
 div .jxgbox
 {
     aspect-ratio: 1/1;
-    height: 100%;
+    height: min(100%, 45vh);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
