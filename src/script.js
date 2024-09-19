@@ -125,6 +125,7 @@ async function handleError(response) {
 
             case "y":
                 y_input_error.textContent = message;
+                break;
 
             default:
                 throw new Error(message);
