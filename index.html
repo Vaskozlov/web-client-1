@@ -28,7 +28,9 @@
         </table>
     </div>
     <div id="input_space">
-        <div id="box1" class="jxgbox"></div>
+        <div class="jxgbox" id="box1">
+
+        </div>
         <p>
             x range: [-3; 3]
         </p>
@@ -38,45 +40,56 @@
         <p>
             <label for="x_input">
                 x:
-                <input id="x_input" placeholder="enter x coordinate" type="text">
-                <span id="x_input_error" class="input_error"></span>
+                <input id="x_input" placeholder="enter x coordinate" type="text"/>
+                <span class="input_error" id="x_input_error">
+
+                </span>
             </label>
         </p>
         <p>
             <label for="y_input">
                 y:
-                <input id="y_input" placeholder="enter y coordinate" type="text">
-                <span id="y_input_error" class="input_error"></span>
+                <input id="y_input" placeholder="enter y coordinate" type="text"/>
+                <span class="input_error" id="y_input_error">
+
+                </span>
             </label>
         </p>
-        <p>
-            <fieldset>
-                <legend>
-                    Choose R
-                </legend>
-                <div>
-                    <input type="checkbox" id="r=1" name="1"/>
-                    <label for="r=1">R = 1</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="r=1.5" name="1.5"/>
-                    <label for="r=1.5">R = 1.5</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="r=2" name="2"/>
-                    <label for="r=2">R = 2</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="r=2.5" name="2.5"/>
-                    <label for="r=2.5">R = 2.5</label>
-                </div>
-                <div></div>
-                    <input type="checkbox" id="r=3" name="3"/>
-                    <label for="r=3">R = 3</label>
-                </div>
-            </fieldset>
-        </p>
-
+        <fieldset>
+            <legend>
+                Choose R
+            </legend>
+            <div>
+                <input id="r=1" name="1" type="checkbox"/>
+                <label for="r=1">
+                    R = 1
+                </label>
+            </div>
+            <div>
+                <input id="r=1.5" name="1.5" type="checkbox"/>
+                <label for="r=1.5">
+                    R = 1.5
+                </label>
+            </div>
+            <div>
+                <input id="r=2" name="2" type="checkbox"/>
+                <label for="r=2">
+                    R = 2
+                </label>
+            </div>
+            <div>
+                <input id="r=2.5" name="2.5" type="checkbox"/>
+                <label for="r=2.5">
+                    R = 2.5
+                </label>
+            </div>
+            <div>
+                <input id="r=3" name="3" type="checkbox"/>
+                <label for="r=3">
+                    R = 3
+                </label>
+            </div>
+        </fieldset>
         <button id="check_button">
             Check
         </button>

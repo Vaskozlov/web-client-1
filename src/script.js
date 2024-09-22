@@ -1,6 +1,6 @@
-import { stringToFloat } from "./string_to_float.js";
-import { insertToTable, deleteRows } from "./table_updater.js"
-import { createBoard, drawAreas } from "./board.js"
+import {stringToFloat} from "./string_to_float.js";
+import {deleteRows, insertToTable} from "./table_updater.js"
+import {createBoard, drawAreas} from "./board.js";
 
 const host_name = "localhost:8080";
 
@@ -10,17 +10,12 @@ const x_input_error = document.getElementById("x_input_error")
 const y_input_error = document.getElementById("y_input_error")
 const board = createBoard();
 
-function showErrorInCaseNonFloatInput(input_element, error_element) {
-    const value = stringToFloat(input_element.value);
-    error_element.textContent = value.isError() ? value.getError().message : "";
-}
-
 x_input_element.oninput = function () {
-    showErrorInCaseNonFloatInput(x_input_element, x_input_error);
+    x_input_error.textContent = "";
 }
 
 y_input_element.oninput = function () {
-    showErrorInCaseNonFloatInput(y_input_element, y_input_error);
+    y_input_error.textContent = "";
 }
 
 window.onload = function () {
@@ -33,12 +28,16 @@ document.getElementById("check_button").onclick = function () {
     const x_value = stringToFloat(x_input_element.value);
 
     if (x_value.isError()) {
+        const error = x_value.getError();
+        x_input_error.textContent = error.message;
         return;
     }
 
     const y_value = stringToFloat(y_input_element.value);
 
     if (y_value.isError()) {
+        const error = x_value.getError();
+        y_input_error.textContent = error.message;
         return;
     }
 
@@ -63,7 +62,7 @@ function testWithRadius(x, y, r_selector_name) {
             return;
         }
 
-        testPoint(x, y, r_value.getValue());
+        testPoint(x, y, r_value.getValue()).then(r => r);
     }
 }
 
@@ -84,11 +83,11 @@ async function testPoint(x, y, r) {
             });
 
         if (!response.ok) {
-            handleError(response);
+            await handleError(response);
             return;
         }
 
-        handleSuccess(response);
+        await handleSuccess(response);
     } catch (error) {
         console.error(error);
         alert("Failed to get response from the server");
