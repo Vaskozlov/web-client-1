@@ -79,7 +79,8 @@ async function testPoint(x, y, r) {
             `http://${host_name}/fcgi-bin/hello-world.jar`,
             {
                 method: "POST",
-                body: json_request
+                body: json_request,
+                headers: new Headers({'content-type': 'application/json'}),
             });
 
         if (!response.ok) {
