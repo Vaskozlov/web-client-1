@@ -24,6 +24,7 @@ div#header h2 {
 #results_table_space {
     float: left;
     width: 65%;
+    margin-bottom: 100vh;
 }
 
 #is_in_area_table {
