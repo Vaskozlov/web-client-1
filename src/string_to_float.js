@@ -1,9 +1,9 @@
-import { Result } from "./result.js";
+import {Result} from "./result.js";
 
 const float_check_regex = /^[+-]?\d+([.,]\d*)?$/;
 
 export function stringToFloat(x) {
-    if (!(x instanceof String)) {
+    if ((typeof x) === 'string' || x instanceof String) {
         return Result.error(new TypeError("Not a string type provided"));
     }
 
