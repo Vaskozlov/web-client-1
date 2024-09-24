@@ -91,7 +91,7 @@ async function testPoint(x, y, r) {
         await handleSuccess(response);
     } catch (error) {
         console.error(error);
-        alert("Failed to get response from the server");
+        alert(`Error: ${error.message}`);
     }
 }
 
@@ -123,6 +123,6 @@ async function handleError(response) {
             break;
 
         default:
-            throw new Error(message);
+            throw new Error(`code: ${response.status}, message: ${message}`);
     }
 }
