@@ -1,5 +1,9 @@
+import * as assert from "node:assert";
+
 export class Result {
     constructor(value, error) {
+        assert(error instanceof Error || error == null);
+
         this.value = value;
         this.error = error;
     }
@@ -30,7 +34,7 @@ export class Result {
 
     getError() {
         if (this.isError()) {
-            return this.error;
+            return Error(this.error);
         }
 
         throw new Error("Result is not error");
