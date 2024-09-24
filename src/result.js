@@ -29,7 +29,7 @@ export class Result {
             return this.value;
         }
 
-        throw new Error("Result is not success");
+        throw new Error("Result is not in success state");
     }
 
     getError() {
@@ -37,6 +37,6 @@ export class Result {
             return Error(this.error);
         }
 
-        throw new Error("Result is not error");
+        throw new Error("Result is not in error state");
     }
 }

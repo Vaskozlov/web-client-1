@@ -1,20 +1,7 @@
-const is_in_area_table = document.getElementById("is_in_area_table")
+import {formatTimeNs} from "./format_time_ns.js";
+
 let current_cell = 1;
-
-function formatTimeNs(time_ns) {
-    const time_us = time_ns / 1000;
-    const time_ms = time_us / 1000;
-
-    if (time_ms > 1) {
-        return `${time_ms.toFixed(2)}ms`;
-    }
-
-    if (time_us > 1) {
-        return `${time_us.toFixed(2)}us`;
-    }
-
-    return `${time_ns}ns`;
-}
+const is_in_area_table = document.getElementById("is_in_area_table")
 
 export function insertIntoTable(x, y, r, is_in_area, time_ns) {
     const row = is_in_area_table.insertRow(current_cell);
