@@ -1,8 +1,8 @@
-import * as assert from "node:assert";
-
 export class Result {
     constructor(value, error) {
-        assert(error instanceof Error || error == null);
+        if (!(error instanceof Error) && error != null) {
+            throw new TypeError("Error type expected in Result");
+        }
 
         this.value = value;
         this.error = error;
