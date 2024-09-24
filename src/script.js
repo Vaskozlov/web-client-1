@@ -1,5 +1,5 @@
 import {stringToFloat} from "./string_to_float.js";
-import {deleteRows, insertToTable} from "./table_updater.js"
+import {deleteRows, insertIntoTable} from "./table_updater.js"
 import {createBoard, drawAreas} from "./board.js";
 
 const host_name = "localhost:8080";
@@ -100,7 +100,7 @@ async function handleSuccess(response) {
         const data = await response.json();
         console.log(data)
 
-        insertToTable(
+        insertIntoTable(
             data["x"],
             data["y"],
             data["r"],
@@ -109,6 +109,7 @@ async function handleSuccess(response) {
         );
     } catch (error) {
         console.error(error);
+        alert(`Server code: ${response.status}, error: ${error.message}`);
     }
 }
 
@@ -132,6 +133,6 @@ async function handleError(response) {
         }
     } catch (error) {
         console.error(error);
-        alert(`Server code: ${response.status}, error: ${error}`)
+        alert(`Server code: ${response.status}, error: ${error.message}`);
     }
 }

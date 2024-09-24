@@ -16,7 +16,7 @@ function formatTimeNs(time_ns) {
     return `${time_ns}ns`;
 }
 
-export function insertToTable(x, y, r, is_in_area, time_ns) {
+export function insertIntoTable(x, y, r, is_in_area, time_ns) {
     const row = is_in_area_table.insertRow(current_cell);
 
     const x_cell = row.insertCell(0);
