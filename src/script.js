@@ -96,43 +96,33 @@ async function testPoint(x, y, r) {
 }
 
 async function handleSuccess(response) {
-    try {
-        const data = await response.json();
-        console.log(data)
+    const data = await response.json();
+    console.log(data)
 
-        insertIntoTable(
-            data["x"],
-            data["y"],
-            data["r"],
-            data["isInArea"],
-            data["executionTimeNS"]
-        );
-    } catch (error) {
-        console.error(error);
-        alert(`Server code: ${response.status}, error: ${error.message}`);
-    }
+    insertIntoTable(
+        data["x"],
+        data["y"],
+        data["r"],
+        data["isInArea"],
+        data["executionTimeNS"]
+    );
 }
 
 async function handleError(response) {
-    try {
-        const data = await response.json();
-        const value = data["value"];
-        const message = data["message"];
+    const data = await response.json();
+    const value = data["value"];
+    const message = data["message"];
 
-        switch (value) {
-            case "x":
-                x_input_error.textContent = message;
-                break;
+    switch (value) {
+        case "x":
+            x_input_error.textContent = message;
+            break;
 
-            case "y":
-                y_input_error.textContent = message;
-                break;
+        case "y":
+            y_input_error.textContent = message;
+            break;
 
-            default:
-                throw new Error(message);
-        }
-    } catch (error) {
-        console.error(error);
-        alert(`Server code: ${response.status}, error: ${error.message}`);
+        default:
+            throw new Error(message);
     }
 }
