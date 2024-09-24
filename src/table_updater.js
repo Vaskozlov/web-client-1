@@ -15,7 +15,7 @@ export function insertIntoTable(x, y, r, is_in_area, time_ns) {
     x_cell.innerHTML = x.toString();
     y_cell.innerHTML = y.toString();
     r_cell.innerHTML = r.toString();
-    is_in_area_cell.innerHTML = is_in_area.toString();
+    is_in_area_cell.innerHTML = is_in_area ? "yes" : "false";
     time_ns_cell.innerHTML = formatTimeNs(time_ns);
 
     ++current_cell;
