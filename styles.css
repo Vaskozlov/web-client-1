@@ -66,6 +66,7 @@ div#header h2 {
 
 #results_table_space .table_of_results th {
     border-collapse: collapse;
+    height: 2.5em;
 }
 
 #results_table_space .table_of_results td {
