@@ -1,15 +1,14 @@
 import {Result} from "./result.js";
 
-const float_check_regex = /^[+-]?\d+([.,]\d*)?$/;
+const floating_point_number_regex = /^[+-]?\d+([.,]\d*)?$/;
 
 export function stringToFloat(x) {
     if ((typeof x) !== 'string' && !(x instanceof String)) {
         return Result.error(new TypeError("Not a string type provided"));
     }
 
-    x = x.replace(",", ".");
-
-    if (float_check_regex.test(x)) {
+    if (floating_point_number_regex.test(x)) {
+        x = x.replace(",", ".");
         return Result.success(parseFloat(x));
     }
 

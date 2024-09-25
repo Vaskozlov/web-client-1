@@ -1,30 +1,22 @@
 import {stringToFloat} from "./string_to_float.js";
-import {deleteRows, insertIntoTable} from "./table_updater.js"
+import {deleteRows, insertIntoTable} from "./is_in_area_table.js"
 import {createBoard, drawAreas} from "./board.js";
 
 const host_name = "localhost:8080";
 
+const board = createBoard();
 const x_input_element = document.getElementById("x_input")
 const y_input_element = document.getElementById("y_input")
 const x_input_error = document.getElementById("x_input_error")
 const y_input_error = document.getElementById("y_input_error")
-const board = createBoard();
 
-x_input_element.oninput = function () {
-    x_input_error.textContent = "";
-}
+x_input_element.oninput = () => x_input_error.textContent = "";
+y_input_element.oninput = () => y_input_error.textContent = "";
 
-y_input_element.oninput = function () {
-    y_input_error.textContent = "";
-}
-
-window.onload = function () {
-    drawAreas(board);
-}
-
+window.onload = () => drawAreas(board);
 document.getElementById("clear_button").onclick = deleteRows;
 
-document.getElementById("check_button").onclick = function () {
+document.getElementById("check_button").onclick = () => {
     const x_value = stringToFloat(x_input_element.value);
 
     if (x_value.isError()) {
@@ -44,14 +36,14 @@ document.getElementById("check_button").onclick = function () {
     const x = x_value.getValue();
     const y = y_value.getValue();
 
-    testWithRadius(x, y, "r=1");
-    testWithRadius(x, y, "r=1.5");
-    testWithRadius(x, y, "r=2");
-    testWithRadius(x, y, "r=2.5");
-    testWithRadius(x, y, "r=3");
+    testPointWithRadius(x, y, "r=1");
+    testPointWithRadius(x, y, "r=1.5");
+    testPointWithRadius(x, y, "r=2");
+    testPointWithRadius(x, y, "r=2.5");
+    testPointWithRadius(x, y, "r=3");
 }
 
-function testWithRadius(x, y, r_selector_name) {
+function testPointWithRadius(x, y, r_selector_name) {
     const selector = document.getElementById(r_selector_name);
 
     if (selector.checked) {
@@ -76,16 +68,17 @@ async function testPoint(x, y, r) {
 
     try {
         const response = await fetch(
-            `http://${host_name}/fcgi-bin/hello-world.jar`,
+            `http://${host_name}/fcgi-bin/server.jar`,
             {
                 method: "POST",
                 body: json_request,
-                headers: new Headers({'content-type': 'application/json'}),
+                headers: new Headers({
+                    'content-type': 'application/json'
+                }),
             });
 
         if (!response.ok) {
-            await handleError(response);
-            return;
+            return await handleError(response);
         }
 
         await handleSuccess(response);

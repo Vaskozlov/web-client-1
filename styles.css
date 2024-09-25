@@ -58,7 +58,7 @@ div#header h2 {
     width: 100%;
 }
 
-#results_table_space .table_of_results thead,table tbody tr {
+#results_table_space .table_of_results thead, table tbody tr {
     display: table;
     table-layout: fixed;
     border-collapse: collapse;
@@ -66,7 +66,6 @@ div#header h2 {
 
 #results_table_space .table_of_results th {
     border-collapse: collapse;
-    height: 35px;
 }
 
 #results_table_space .table_of_results td {
@@ -93,20 +92,28 @@ div#header h2 {
     width: 30%;
 }
 
-div .jxgbox
-{
+div .jxgbox {
     aspect-ratio: 1/1;
     width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-#check_button{
-    margin-left: 5%;
+#check_button {
+    margin-left: 1%;
     margin-top: 2%;
 }
 
-span.input_error
-{
+#check_button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#clear_button:hover{
+    background-color: #f44336;
+    color: white;
+}
+
+span.input_error {
     display: block;
     color: red;
     margin: 5px 0 0 0;
