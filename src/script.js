@@ -1,10 +1,10 @@
+import {createBoard, drawAreas} from "./board.js";
 import {stringToFloat} from "./string_to_float.js";
 import {deleteRows, insertIntoTable} from "./is_in_area_table.js"
-import {createBoard, drawAreas} from "./board.js";
 
 const host_name = "localhost:8080";
 
-const board = createBoard();
+const board = createBoard("box1");
 const x_input_element = document.getElementById("x_input")
 const y_input_element = document.getElementById("y_input")
 const x_input_error = document.getElementById("x_input_error")
@@ -78,7 +78,8 @@ async function testPoint(x, y, r) {
             });
 
         if (!response.ok) {
-            return await handleError(response);
+            await handleError(response);
+            return;
         }
 
         await handleSuccess(response);

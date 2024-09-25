@@ -1,7 +1,7 @@
 import JXG from 'https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.mjs';
 
-export function createBoard() {
-    return JXG.JSXGraph.initBoard('box1', {
+export function createBoard(elementId) {
+    return JXG.JSXGraph.initBoard(elementId, {
         boundingbox: [-8, 8, 8, -8],
         showCopyright: false,
         showNavigation: false,
