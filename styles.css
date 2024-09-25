@@ -5,6 +5,7 @@
 body {
     color: CanvasText;
     background-color: Canvas;
+    font-family: 'Monospaced', monospace;
 }
 
 div#header h1 {
