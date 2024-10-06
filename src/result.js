@@ -1,9 +1,5 @@
 export class Result {
     constructor(value, error) {
-        if (!(error instanceof Error) && error != null) {
-            throw new TypeError("Error type expected in Result");
-        }
-
         this.value = value;
         this.error = error;
     }
@@ -34,7 +30,7 @@ export class Result {
 
     getError() {
         if (this.isError()) {
-            return Error(this.error);
+            return this.error;
         }
 
         throw new Error("Result is not in error state");

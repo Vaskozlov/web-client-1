@@ -4,7 +4,7 @@ const floating_point_number_regex = /^[+-]?\d+([.,]\d*)?$/;
 
 export function stringToFloat(x) {
     if ((typeof x) !== 'string' && !(x instanceof String)) {
-        return Result.error(new TypeError("Not a string type provided"));
+        return Result.error("Not a string type provided");
     }
 
     if (floating_point_number_regex.test(x)) {
@@ -12,5 +12,5 @@ export function stringToFloat(x) {
         return Result.success(parseFloat(x));
     }
 
-    return Result.error(new TypeError("Input does not represent a float"));
+    return Result.error("Input does not represent a float");
 }

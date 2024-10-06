@@ -20,16 +20,14 @@ document.getElementById("check_button").onclick = () => {
     const x_value = stringToFloat(x_input_element.value);
 
     if (x_value.isError()) {
-        const error = x_value.getError();
-        x_input_error.textContent = error.message;
+        x_input_error.textContent = x_value.getError();
         return;
     }
 
     const y_value = stringToFloat(y_input_element.value);
 
     if (y_value.isError()) {
-        const error = x_value.getError();
-        y_input_error.textContent = error.message;
+        y_input_error.textContent = y_value.getError();
         return;
     }
 
