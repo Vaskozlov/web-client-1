@@ -91,13 +91,7 @@ async function handleSuccess(response) {
     const data = await response.json();
     console.log(data)
 
-    insertIntoTable(
-        data["x"],
-        data["y"],
-        data["r"],
-        data["isInArea"],
-        data["executionTimeNS"]
-    );
+    insertIntoTable(data);
 }
 
 async function handleError(response) {
