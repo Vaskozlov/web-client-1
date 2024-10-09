@@ -6,15 +6,11 @@ const is_in_area_table = document.getElementById("is_in_area_table")
 export function insertIntoTable({x, y, r, is_in_area, time_ns}) {
     const row = is_in_area_table.insertRow(current_cell);
 
-    for (let i = 0; i !== 3; ++i) {
-        row.insertCell(i).innerHTML = arguments[i];
-    }
-
-    const is_in_area_cell = row.insertCell(3);
-    const time_ns_cell = row.insertCell(4);
-
-    is_in_area_cell.innerHTML = is_in_area ? "yes" : "no";
-    time_ns_cell.innerHTML = formatTimeNs(time_ns);
+    row.insertCell(0).innerHTML = x;
+    row.insertCell(1).innerHTML = y;
+    row.insertCell(2).innerHTML = r;
+    row.insertCell(3).innerHTML = is_in_area ? "yes" : "no";
+    row.insertCell(4).innerHTML = formatTimeNs(time_ns)
 
     ++current_cell;
 }
